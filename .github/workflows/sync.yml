@@ -1,0 +1,55 @@
+name: Sync Fork
+
+# Define triggers: schedule (daily) and manual trigger (workflow_dispatch)
+on:
+  schedule:
+    - cron: '0 0 * * *' # Automatic sync at midnight UTC every day
+  workflow_dispatch:      # Allows manual trigger
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write  # Grant permission to push changes
+
+    steps:
+      # Step 1: Checkout the titus branch of your repository
+      - name: Checkout titus branch
+        uses: actions/checkout@v3
+        with:
+          ref: titus  # Ensure we're checking out the titus branch
+
+      # Step 2: Set up Git configuration for commits
+      - name: Set up Git
+        run: |
+          git config --global user.name "aarjaycreation"
+          git config --global user.email "aarjaycreation@gmail.com"
+
+      # Step 3: Add upstream repository and fetch its changes
+      - name: Add Upstream repository
+        run: |
+          git remote add upstream https://github.com/ChrisTitusTech/winutil
+          git fetch upstream
+
+      # Step 4: Check if there are differences between upstream and titus branch
+      - name: Check for changes from upstream
+        id: check_changes
+        run: |
+          git diff --quiet HEAD upstream/main || echo "Changes detected"
+
+      # Step 5: Sync changes if there are differences
+      - name: Sync and merge upstream changes into titus branch
+        if: steps.check_changes.outputs.result != 'success'
+        run: |
+          echo "Merging changes from upstream into titus branch"
+          git merge upstream/main --allow-unrelated-histories
+          git push origin titus  # Push changes to the titus branch
+        env:
+          GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
+
+      # Step 6: Handle failures if conflicts occur
+      - name: Handle failure (notify or halt)
+        if: failure()
+        run: |
+          echo "Sync failed due to conflicts in titus branch. Please resolve them manually."
