@@ -34,8 +34,9 @@
     * By default Winutil will use winget to install/upgrade/remove packages and fallback to Chocolatey. This option reverses the preference.
     * This preference will be used for all Buttons on the Install page and persist across Winutil restarts
 
-![Install Image](assets/Install-Tab-Dark.png#only-dark)
-![Install Image](assets/Install-Tab-Light.png#only-light)
+![Install Image](assets/Install-Tab-Dark.png#only-dark#gh-dark-mode-only)
+![Install Image](assets/Install-Tab-Light.png#only-light#gh-light-mode-only)
+
 !!! tip
 
      If you have trouble finding an application, press `ctrl + f` and search the name of it. Applications will filter depending on your input.
@@ -43,8 +44,8 @@
 ## Tweaks
 ---
 
-![Tweaks Image](assets/Tweaks-Tab-Dark.png#only-dark)
-![Tweaks Image](assets/Tweaks-Tab-Light.png#only-light)
+![Tweaks Image](assets/Tweaks-Tab-Dark.png#only-dark#gh-dark-mode-only)
+![Tweaks Image](assets/Tweaks-Tab-Light.png#only-light#gh-light-mode-only)
 
 ### Run Tweaks
 * **Open Tweaks Tab**: Navigate to the 'Tweaks' tab in the application.
@@ -76,13 +77,17 @@ The utility provides a convenient DNS selection feature, allowing users to choos
 
 * **Default**: Uses the default DNS settings configured by your ISP or network.
 * **DHCP**: Automatically acquires DNS settings from the DHCP server.
-* [**Google**](https://developers.google.com/speed/public-dns?hl=de): A reliable and fast DNS service provided by Google.
+* [**Google**](https://developers.google.com/speed/public-dns?hl=en): A reliable and fast DNS service provided by Google.
 * [**Cloudflare**](https://developers.cloudflare.com/1.1.1.1/): Known for speed and privacy, Cloudflare DNS is a popular choice for enhancing internet performance.
 * [**Cloudflare_Malware**](https://developers.cloudflare.com/1.1.1.1/setup/#:~:text=Use%20the%20following%20DNS%20resolvers%20to%20block%20malicious%20content%3A): Provides additional protection by blocking malware sites.
 * [**Cloudflare_Malware_Adult**](https://developers.cloudflare.com/1.1.1.1/setup/#:~:text=Use%20the%20following%20DNS%20resolvers%20to%20block%20malware%20and%20adult%20content%3A): Blocks both malware and adult content, offering more comprehensive filtering.
-* [**Level3**](https://www.lumen.com/): Another fast and reliable DNS service option.
 * [**Open_DNS**](https://www.opendns.com/setupguide/#familyshield): Offers customizable filtering and enhanced security features.
 * [**Quad9**](https://quad9.net/): Focuses on security by blocking known malicious domains.
+* [**AdGuard_Ads_Trackers**](https://adguard-dns.io/en/welcome.html) AdGuard DNS will block ads, trackers, or any other DNS requests. Visit website and login for a dashboard, statistics and customize your experience in the server settings.
+* [**AdGuard_Ads_Trackers_Malware_Adult**](https://adguard-dns.io/en/welcome.html) AdGuard DNS will block ads, trackers, adult content, and enable Safe Search and Safe Mode, where possible.
+* [**dns0.eu_Open**](https://www.dns0.eu/) The European public DNS that makes your Internet safer. Offers general-purpose filtering to block malware, phishing, and tracking domains for enhanced privacy and security.
+* [**dns0.eu_ZERO**](https://www.dns0.eu/zero) Provides advanced security with robust filters for highly sensitive environments, blocking high-risk domains using threat intelligence and sophisticated heuristics like Newly Registered Domains (NRD) and Domain Generation Algorithms (DGA).
+* [**dns0.eu_KIDS**](https://www.dns0.eu/kids) A child-safe DNS that blocks adult content, explicit search results, mature videos, dating sites, piracy, and ads, creating a secure internet experience for children on any device or network.
 
 ### Customize Preferences
 
@@ -141,6 +146,10 @@ Open old-school Windows panels directly from WinUtil. Following Panels are avail
 * System Properties
 * User Accounts
 
+### Remote Access
+
+Enables OpenSSH server on your windows machine.
+
 ## Updates
 ---
 
@@ -175,8 +184,8 @@ The utility provides three distinct settings for managing Windows updates: Defau
 
 * **MicroWin** lets you customize your Windows 10 and 11 installation images by debloating them however you want.
 
-![Microwin](assets/Microwin-Dark.png#only-dark)
-![Microwin](assets/Microwin-Light.png#only-light)
+![Microwin](assets/Microwin-Dark.png#only-dark#gh-dark-mode-only)
+![Microwin](assets/Microwin-Light.png#only-light#gh-light-mode-only)
 
 #### Basic usage
 
@@ -234,12 +243,12 @@ With MicroWin, you can also configure your user before proceeding if you don't w
 * Some features are available through automation. This allows you to save your config file, pass it to WinUtil, walk away and come back to a finished system. Here is how you can set it up currently with Winutil >24.01.15
 
 * On the Install Tab, click "Get Installed", this will get all installed apps **supported by Winutil** on the system.
-![GetInstalled](assets/Get-Installed-Dark.png#only-dark)
-![GetInstalled](assets/Get-Installed-Light.png#only-light)
+![GetInstalled](assets/Get-Installed-Dark.png#only-dark#gh-dark-mode-only)
+![GetInstalled](assets/Get-Installed-Light.png#only-light#gh-light-mode-only)
 
 * Click on the Settings cog in the upper right corner and choose Export. Choose file file and location; this will export the setting file.
-![SettingsExport](assets/Settings-Export-Dark.png#only-dark)
-![SettingsExport](assets/Settings-Export-Light.png#only-light)
+![SettingsExport](assets/Settings-Export-Dark.png#only-dark#gh-dark-mode-only)
+![SettingsExport](assets/Settings-Export-Light.png#only-light#gh-light-mode-only)
 
 * Copy this file to a USB or somewhere you can use it after Windows installation.
 
@@ -249,6 +258,6 @@ With MicroWin, you can also configure your user before proceeding if you don't w
 
 * On any supported Windows machine, open PowerShell **as Admin** and run the following command to automatically apply tweaks and install apps from the config file.
     ```ps1
-    iex "& { $(irm christitus.com/win) } -Config [path-to-your-config] -Run"
+    iex "& { $(irm https://christitus.com/win) } -Config [path-to-your-config] -Run"
     ```
 * Have a cup of coffee! Come back when it's done.
